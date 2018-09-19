@@ -34,7 +34,10 @@ $prefix: "xf-indicator";
   text-align: center;
   z-index: 3000;
 }
-
+.#{$prefix}-spin {
+  display: inline-block;
+  text-align: center;
+}
 .#{$prefix}-mask {
   position: fixed;
   top: 0;
