@@ -4,7 +4,7 @@
     <!-- <xf-field title="title" text-align="right" placeholder="请输入" v-model="test"></xf-field> -->
     <!-- <xf-switch v-model="test">11+{{test}}</xf-switch> -->
     <!-- <xf-radio :options='options' v-model="value"></xf-radio> -->
-    <xf-indicator></xf-indicator>
+    <xf-indicator :type="type" :text="text"></xf-indicator>
   </div>
 </template>
 
@@ -34,9 +34,11 @@ export default {
     return {
       options:[{label:'1',value:'1'},{label:'2',value:'2'}],
       value:'',
-      color: 'red'
+      color: 'red',
+      type:'fading-circle',
+      text: '1234'
     }
-  }
+  },
 }
 </script>
 

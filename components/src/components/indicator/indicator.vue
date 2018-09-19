@@ -1,11 +1,11 @@
 <template>
-  <transition name="xf-indicator">
-    <div class="xf-indicator" >
-      <div class="xf-indicator-wrapper" style="padding:15px">
-        <xf-spinner class="xf-indicator-spin"></xf-spinner>
-        <span class="xf-indicator-text">1234</span>
+  <transition name="xf-indicator" >
+    <div class="xf-indicator" v-show="visible">
+      <div class="xf-indicator-wrapper" :style="{'padding':text ? '20px': '15px'}">
+        <xf-spinner class="xf-indicator-spin" :type="selectSpinnerType" :size="32"></xf-spinner>
+        <span class="xf-indicator-text" v-text="text"></span>
       </div>
-      <div class="xf-indicator-mask"></div>
+      <div class="xf-indicator-mask" @touchmove.stop.prevent></div>
     </div>
   </transition>
 </template>
@@ -13,7 +13,33 @@
 <script>
 import XfSpinner from 'components/spinner/index'
 export default {
-  components: { XfSpinner }
+  components: { XfSpinner },
+  data() {
+    return {
+      visible: false
+    }
+  },
+  computed: {
+    selectSpinnerType() {
+      switch (this.spinnerType) {
+        case 'double-bounce':
+          return 1;
+        case 'triple-bounce':
+          return 2;
+        case 'fading-circle':
+          return 3;
+        default:
+          return 0;
+      }
+    },
+  },
+  props: {
+    text: String,
+    spinnerType: {
+      type: String,
+      default: 'snake'
+    }
+  }
 }
 </script>
 
@@ -38,6 +64,13 @@ $prefix: "xf-indicator";
   display: inline-block;
   text-align: center;
 }
+.#{$prefix}-text {
+  display: block;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+}
 .#{$prefix}-mask {
   position: fixed;
   top: 0;
@@ -46,9 +79,13 @@ $prefix: "xf-indicator";
   height: 100vh;
   opacity: 0;
   background: transparent;
-  z-index: 3000;
+  z-index: 2500;
 }
 
+.#{$prefix}-enter,
+.#{$prefix}-leave-active {
+  opacity: 0;
+}
 
 </style>
 
