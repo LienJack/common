@@ -4,7 +4,6 @@
     <!-- <xf-field title="title" text-align="right" placeholder="请输入" v-model="test"></xf-field> -->
     <!-- <xf-switch v-model="test">11+{{test}}</xf-switch> -->
     <!-- <xf-radio :options='options' v-model="value"></xf-radio> -->
-    <xf-indicator :type="type" :text="text"></xf-indicator>
   </div>
 </template>
 
@@ -16,7 +15,6 @@ import XfField from './components/field/field'
 import Icon from './components/icon/icon'
 import XfSwitch from './components/switch/switch'
 import XfRadio from './components/radio/radio'
-import XfIndicator from './components/indicator/indicator'
 
 export default {
   name: 'App',
@@ -28,7 +26,6 @@ export default {
     Icon,
     XfSwitch,
     XfRadio,
-    XfIndicator,
   },
   data() {
     return {
@@ -39,6 +36,14 @@ export default {
       text: '1234'
     }
   },
+  mounted() {
+    this.$indicator.open({text: "132456", type:"2"})
+  },
+  methods: {
+    close () {
+      this.$indicator.close()
+    }
+  }
 }
 </script>
 

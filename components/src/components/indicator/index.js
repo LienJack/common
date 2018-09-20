@@ -1,29 +1,17 @@
 import Vue from 'vue'
-
-const Indicator = Vue.extend(require('./indicator.vue')); // 路径要改
-
-let instance; // 实现单例
-Vue.$indicator = Vue.prototype.$indicator = Indicator;
+import Indicator from './indicator.vue'
 export default {
-  open(options = {}) {
-    if(!instance) {
-      instance = new Indicator({
-        el: document.createElement('div')
-      });
+  install (Vue) {
+    const VueIndicator = Vue.extend(Indicator)
+    let instance = null
+    function indicator () {
+      if(!instance) {
+        instance = new VueIndicator()
+        instance.$mount()
+        document.body.appendChild(instance.$el)
+      }
+      return instance
     }
-    if(instance.visable) return;
-    instance.text = typeof options === 'string' ? options : options.text || '';
-    instance.spinnerType = options.spinnerType || 'snake';
-    document.body.appendChild(instance.$el);
-
-    Vue.nextTick(()=> {
-      instance.visable = true;
-    })
-  },
-  close () {
-    if(instance) {
-      instance.visable = false;
-    }
+    Vue.prototype.$indicator = indicator()
   }
 }
-

@@ -1,5 +1,5 @@
 <template>
-  <span><component is="spinner-snake" :size="size" :color="color"></component></span>
+  <span><component :is="spinner" :size="size" :color="color"></component></span>
 </template>
 
 <script>
@@ -32,13 +32,12 @@ const parseSpinner = function(index) {
     console.wran(`${index} spinner not found, use the default spinner`)
     index = 0;
   }
-  return SPINNERS[0]
+  return SPINNERS[index]
 }
 export default {
   computed: {
     spinner() {
-      // return `spinner-${parseSpinner(this.type)}`
-      return `spinner-snake`
+      return `spinner-${parseSpinner(this.type)}`
     }
   },
   components: {

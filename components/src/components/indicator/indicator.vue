@@ -16,29 +16,56 @@ export default {
   components: { XfSpinner },
   data() {
     return {
-      visible: false
+      visible: false,
+      text: null,
+      type: 'snake',
+      // onShow: () => {},
+      // onHide: () => {},
     }
   },
   computed: {
     selectSpinnerType() {
-      switch (this.spinnerType) {
+      switch (this.type) {
         case 'double-bounce':
           return 1;
         case 'triple-bounce':
           return 2;
         case 'fading-circle':
           return 3;
+        case '1':
+          return 1;
+        case '2':
+          return 2;
+        case '3':
+          return 3;
         default:
           return 0;
       }
     },
   },
-  props: {
-    text: String,
-    spinnerType: {
-      type: String,
-      default: 'snake'
+  methods: {
+    open(params) {
+      if (params) {
+        this.text = typeof params === 'string' ? params : params.text || ''
+        this.type = params.type || 'snake'
+      } else {
+        this.text = null
+        this.type = 'snake'
+      }
+      this.visible = true
+    },
+    close() {
+      this.visible = false
     }
+  },
+  watch: {
+    // visible (val) {
+    //   if(val && typeof this.onShow === 'function') {
+    //     this.onShow()
+    //   } else if (!val && typeof this.onHide === 'function') {
+    //     this.onHide()
+    //   }
+    // }
   }
 }
 </script>
