@@ -1,31 +1,23 @@
 <template>
   <div id="app">
-    <!-- <xf-cell title="title" value="value"><p>文本</p></xf-cell>  -->
-    <!-- <xf-field title="title" text-align="right" placeholder="请输入" v-model="test"></xf-field> -->
-    <!-- <xf-switch v-model="test">11+{{test}}</xf-switch> -->
-    <!-- <xf-radio :options='options' v-model="value"></xf-radio> -->
+    <xf-button @click.native="show">comfirm</xf-button>
+    <xf-actionsheet></xf-actionsheet>
   </div>
 </template>
 
 <script>
 import XfButton from './components/button/button'
-import Swiper from './components/swiper/swiper'
-import XfCell from './components/cell/cell'
-import XfField from './components/field/field'
-import Icon from './components/icon/icon'
-import XfSwitch from './components/switch/switch'
-import XfRadio from './components/radio/radio'
+import XfTotast from './components/toast/toast'
+import XfActionsheet from './components/actionsheet/actionsheet'
+// import XfMessagebox from './components/messagebox/messagebox'
+import test from './components/test/test'
 
 export default {
   name: 'App',
   components: {
     XfButton,
-    Swiper,
-    XfCell,
-    XfField,
-    Icon,
-    XfSwitch,
-    XfRadio,
+    XfTotast,
+    XfActionsheet,
   },
   data() {
     return {
@@ -33,15 +25,20 @@ export default {
       value:'',
       color: 'red',
       type:'fading-circle',
-      text: '1234'
+      text: '1234',
+      iconClass:'xf-icon-md-bookmark' 
     }
   },
   mounted() {
-    this.$indicator.open({text: "132456", type:"2"})
+
   },
   methods: {
     close () {
-      this.$indicator.close()
+    },
+    show() {
+      //  this.$msgBox.open({'title':'注意','content':'内容','isClickClose':true}).then(() => console.log('hello')).catch(()=> console.log('no'))
+      this.$toast.open("123")
+      this.$toast.open("456")
     }
   }
 }
