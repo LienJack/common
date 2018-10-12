@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <xf-button @click.native="show">comfirm</xf-button>
-    <xf-actionsheet></xf-actionsheet>
+    <!-- <xf-actionsheet :actions="actions" v-model="isShow"></xf-actionsheet> -->
   </div>
 </template>
 
@@ -26,7 +26,9 @@ export default {
       color: 'red',
       type:'fading-circle',
       text: '1234',
-      iconClass:'xf-icon-md-bookmark' 
+      iconClass:'xf-icon-md-bookmark',
+      actions:[{name:'上传本地'}, {name:'拍摄'}, {name:'1234'}] ,
+      isShow: true
     }
   },
   mounted() {
@@ -36,9 +38,12 @@ export default {
     close () {
     },
     show() {
-      //  this.$msgBox.open({'title':'注意','content':'内容','isClickClose':true}).then(() => console.log('hello')).catch(()=> console.log('no'))
-      this.$toast.open("123")
-      this.$toast.open("456")
+      this.$alert.open("今晚一起吃烤肉1").then(()=>console.log("1"))
+      this.$alert.open("今晚一起吃烤肉2").then(()=>console.log("2"))
+      this.$alert.open("今晚一起吃烤肉3").then(()=>console.log("3"))
+      // this.$alert.open("今晚一起吃烤肉1")
+      // this.$alert.open("今晚一起吃烤肉2")
+      // this.$alert.open("今晚一起吃烤肉3")
     }
   }
 }

@@ -1,20 +1,38 @@
 <template>
     <div>
-      <div class="xf-actionsheet">
-        <ul class="xf-actionsheet-list">
-          <li class="xf-actionsheet-list-item">1234</li>
-          <li class="xf-actionsheet-list-item">1234</li>
-          <li class="xf-actionsheet-list-item">1234</li>
-        </ul>
-      </div>
+      <transition name="float">
+        <div class="xf-actionsheet" v-show="value">
+          <ul class="xf-actionsheet-list">
+            <li v-for="( item, index ) in actions" class="xf-actionsheet-list-item">{{ item.name }}</li>
+          </ul>
+          <a class="xf-actionsheet-button">{{ cancelText }}</a>
+        </div>
     </transition>
-    <div class="xf-actionsheet-mask"></div>
+    <div class="xf-actionsheet-mask" v-show="value" @click="close()"></div>
   </div>
 </template>
 
 <script>
 export default {
-  
+  props: {
+    value: {
+      type: Boolean,
+      default: false
+    },
+    actions: {
+      type: Array,
+      default: ()=> []
+    },
+    cancelText: {
+      type: String,
+      default: '取消'
+    }
+  },
+  methods: {
+    close() {
+      this.value = false
+    }
+  }
 }
 </script>
 
@@ -37,7 +55,7 @@ export default {
     padding: 0;
     margin: 0;
   }
-  .#{$prefix}-list-item, button {
+  .#{$prefix}-list-item, .#{$prefix}-button {
     display: block;
     width: 100%;
     height: 45px;
@@ -62,6 +80,10 @@ export default {
     background-color: rgba(55,55,55,.6);
     height: 100vh;
     z-index: 990;
+  }
+  .float-enter,
+  .float-leave-active {
+    transform: translate3d(-50%, 100%, 0);
   }
 </style>
 

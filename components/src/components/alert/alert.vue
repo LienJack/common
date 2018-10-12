@@ -17,7 +17,7 @@
             </div>
           </div>
           <div class="xf-msgbox-btns">
-            <button class="confirmButton" @click="comfirm">{{confirmBtn}}</button>
+            <button class="confirmButton" @click="confirm">{{confirmBtn}}</button>
             <button class="cancelButton" @click="cancel">{{cancelBtn}}</button>
           </div>
         </div>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import bus from '@/bus.js'
 export default {
   props: {
     title: {
@@ -59,28 +60,26 @@ export default {
     }
   },
   methods: {
-    comfirm () {
-      // this.isShow = false
-      this.resolve('confirm')
-      // this.remove()
+    confirm () {
+      this.isShow = false
+      this.resolve(true)
+      this.remove()
     },
     cancel() {
-      // this.isShow = false
-      this.reject('cancel')
-      // this.remove()
+      this.isShow = false
+      // this.reject(false)
+      this.remove()
     },
-    showMsgBox() {
+    showAlert() {
       this.isShow = true
       this.promise = new Promise((resolve, reject) => {
         this.resolve = resolve
-        this.reject = reject
+        // this.reject = reject
       })
       return this.promise
     },
     remove() {
-      setTimeout(() => {
-        this.destory()
-      }, 500)
+      this.destory()
     },
     destory() {
       this.$destroy()
