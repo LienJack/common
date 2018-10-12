@@ -62,6 +62,7 @@ export default {
   methods: {
     confirm () {
       this.isShow = false
+      this.$emit('ok')
       this.resolve(true)
       this.remove()
     },

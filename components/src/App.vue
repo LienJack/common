@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <xf-button @click.native="show">comfirm</xf-button>
+    <xf-button @click.native="show">confirm</xf-button>
     <!-- <xf-actionsheet :actions="actions" v-model="isShow"></xf-actionsheet> -->
   </div>
 </template>
@@ -38,12 +38,12 @@ export default {
     close () {
     },
     show() {
-      this.$alert.open("今晚一起吃烤肉1").then(()=>console.log("1"))
-      this.$alert.open("今晚一起吃烤肉2").then(()=>console.log("2"))
-      this.$alert.open("今晚一起吃烤肉3").then(()=>console.log("3"))
-      // this.$alert.open("今晚一起吃烤肉1")
-      // this.$alert.open("今晚一起吃烤肉2")
-      // this.$alert.open("今晚一起吃烤肉3")
+      // this.$alert.open("今晚一起吃烤肉1").then(()=>console.log("1"))
+      // this.$alert.open("今晚一起吃烤肉2").then(()=>console.log("2"))
+      // this.$alert.open("今晚一起吃烤肉3").then(()=>console.log("3"))
+      this.$alert.open("今晚一起吃烤肉1")
+      this.$alert.open("今晚一起吃烤肉2")
+      this.$alert.open("今晚一起吃烤肉3")
     }
   }
 }

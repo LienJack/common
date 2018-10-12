@@ -12,28 +12,32 @@ Alert.install = function(Vue, options) {
   // }
   // Vue.prototype.$alert = {
   //   open: (options) => {
-  //     initInstance()
-  //     if(typeof options === 'string') {
-  //       currentAlert.content = options
-  //     } else if (typeof options === 'object') {
-  //       object.assign(currentAlert, options)
-  //     }
-  //     currentAlert.isShow = true
-  //     return currentAlert.showAlert()
-  //     .then( val => {
-  //       currentAlert = null
-  //       return Promise.resolve(val)
-  //     })
-  //     .catch( err => {
-  //       currentAlert = null
-  //       return Promise.reject(err)
-  //     })
+  //     return new Promise ((resolve, reject) => {
+  //       initInstance()
+  //       if(typeof options === 'string') {
+  //         currentAlert.content = options
+  //       } else if (typeof options === 'object') {
+  //         object.assign(currentAlert, options)
+  //       }
+  //       return currentAlert.showAlert()
+  //       .then( val => {
+  //         currentAlert = null
+  //         resolve(val)
+  //       })
+  //       .catch( err => {
+  //         currentAlert = null
+  //         reject(err)
+  //       })
+  //     }) 
       
   //   },
   //   close: () => {
   //     currentAlert.isShow = false
   //   }
   // }
+
+
+
   const alertConstrunctor = Vue.extend(alertComponent)
   // let  currentAlert
   const queue = new PromiseQueue()
@@ -88,6 +92,8 @@ class PromiseQueue {
     if (!this.queue.length) { return this.isRuning = false }
     if (this.queue.length) {
       const { vm, resolve, reject } = this.queue.shift()
+      // let queueResolve = resolve
+      // let queneReject = reject
       const alertEl = vm.$mount().$el
       document.body.appendChild(alertEl)
       vm.showAlert().then((data)=> {
@@ -96,6 +102,17 @@ class PromiseQueue {
       }).catch(err => {
         reject(err)
       }).then(()=>{this._checkNext()})
+      // vm.showAlert().then((data)=> {
+      //   return new Promise ((resolve, reject) => {
+      //     queueResolve(true) // queue
+      //     this._checkNext()
+      //     resolve(true) // $alert
+      //   })
+      // }).catch(err => {
+      //   queneReject(false)
+      //   this._checkNext()
+      //   reject()
+      // })
       
     }
   }
