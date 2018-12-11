@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <xf-button @click.native="show">confirm</xf-button>
+    <!-- <xf-button @click.native="show">confirm</xf-button> -->
     <!-- <xf-actionsheet :actions="actions" v-model="isShow"></xf-actionsheet> -->
+    <i-form></i-form>
   </div>
 </template>
 
@@ -10,6 +11,7 @@ import XfButton from './components/button/button'
 import XfTotast from './components/toast/toast'
 import XfActionsheet from './components/actionsheet/actionsheet'
 // import XfMessagebox from './components/messagebox/messagebox'
+import IForm from './components/form'
 import test from './components/test/test'
 
 export default {
@@ -18,6 +20,7 @@ export default {
     XfButton,
     XfTotast,
     XfActionsheet,
+    IForm
   },
   data() {
     return {
