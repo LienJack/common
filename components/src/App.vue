@@ -38,12 +38,10 @@ export default {
     close () {
     },
     show() {
-      // this.$alert.open("今晚一起吃烤肉1").then(()=>console.log("1"))
-      // this.$alert.open("今晚一起吃烤肉2").then(()=>console.log("2"))
-      // this.$alert.open("今晚一起吃烤肉3").then(()=>console.log("3"))
-      this.$alert.open("今晚一起吃烤肉1")
-      this.$alert.open("今晚一起吃烤肉2")
-      this.$alert.open("今晚一起吃烤肉3")
+      this.$info('提及1')
+      this.$info('提及2')
+      this.$info('提及3')
+      this.$info('提及4')
     }
   }
 }

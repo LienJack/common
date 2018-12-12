@@ -62,12 +62,13 @@ export default {
   methods: {
     confirm () {
       this.isShow = false
-      this.$emit('ok')
-      this.resolve(true)
-      this.remove()
+      // this.resolve(true)
+      // this.remove()
+      this.$emit('confirm')
     },
     cancel() {
       this.isShow = false
+      this.$emit('cancel')
       // this.reject(false)
       this.remove()
     },
@@ -80,6 +81,7 @@ export default {
       return this.promise
     },
     remove() {
+      this.$emit('close')
       this.destory()
     },
     destory() {

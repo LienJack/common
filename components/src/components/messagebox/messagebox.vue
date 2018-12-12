@@ -60,22 +60,14 @@ export default {
   },
   methods: {
     comfirm () {
-      // this.isShow = false
+      this.isShow = false
       this.resolve('confirm')
       // this.remove()
     },
     cancel() {
-      // this.isShow = false
+      this.isShow = false
       this.reject('cancel')
       // this.remove()
-    },
-    showMsgBox() {
-      this.isShow = true
-      this.promise = new Promise((resolve, reject) => {
-        this.resolve = resolve
-        this.reject = reject
-      })
-      return this.promise
     },
     remove() {
       setTimeout(() => {
