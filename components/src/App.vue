@@ -2,7 +2,9 @@
   <div id="app">
     <!-- <xf-button @click.native="show">confirm</xf-button> -->
     <!-- <xf-actionsheet :actions="actions" v-model="isShow"></xf-actionsheet> -->
-    <i-form></i-form>
+    <checkbox></checkbox>
+    <!-- <i-form></i-form> -->
+    <alert></alert>
   </div>
 </template>
 
@@ -12,7 +14,8 @@ import XfTotast from './components/toast/toast'
 import XfActionsheet from './components/actionsheet/actionsheet'
 // import XfMessagebox from './components/messagebox/messagebox'
 import IForm from './components/form'
-import test from './components/test/test'
+import checkbox from './components/checkbox/index'
+import alert from './components/alert/alert'
 
 export default {
   name: 'App',
@@ -20,7 +23,9 @@ export default {
     XfButton,
     XfTotast,
     XfActionsheet,
-    IForm
+    IForm,
+    checkbox,
+    alert
   },
   data() {
     return {

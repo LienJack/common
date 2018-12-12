@@ -31,6 +31,32 @@ export default {
     rules: {
       type: Object
     }
+  },
+  methods: {
+    resetFields() {
+      this.fields.forEach(field => {
+        field.resetField()
+      })
+    },
+    validate(callback) {
+      return new Promise(resolve => {
+        let valid = true
+        let count = 0
+        this.fields.forEach(field => {
+          field.validate('', error => {
+            if(error) {
+              valid = false
+            }
+            if(++count === this.fields.length) {
+              resolve(valid)
+              if(typeof callback === 'function') {
+                callback(valid)
+              }
+            }
+          })
+        })
+      })
+    }
   }
 }
 </script>
