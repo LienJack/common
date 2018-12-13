@@ -1,13 +1,22 @@
-"use strict";
-var b = 'b'
+import Notification from './notification'
 
-function a() {
-  console.log(this)
-  console.log(this.b)
-  this.b = 'bb'
+let messageInstance
+function getMessageInstance() {
+  messageInstance = messageInstance || Notification.newInstance()
+  return messageInstance
 }
-a.prototype.getB = function() {
-  console.log(this.b)
+
+function notice({ duration = 1.5, content=""}) {
+  let instance = getMessageInstance()
+
+  instance.add({
+    content: content,
+    duration: duration
+  })
 }
-a()
-(new a()).getB()
+
+export default {
+  info(options) {
+    return notice(options)
+  }
+}

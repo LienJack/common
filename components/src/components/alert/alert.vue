@@ -28,7 +28,7 @@ export default {
 
       const duration = notice.duration
       setTimeout(()=> {
-        this.remove(name)
+        // this.remove(name)
       }, duration*1000)
     },
     remove(name) {

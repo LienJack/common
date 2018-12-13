@@ -3,7 +3,6 @@ import Vue from 'vue'
 
 Alert.newInstance = properties => {
   const props = properties || {}
-  console.log(Alert)
   const Instance = new Vue({
     data: props,
     render (h) {
