@@ -1,26 +1,34 @@
 <template>
-  <label >
+  <label class="lien-checkbox">
     <span>
       <input 
         v-if="group"
         type="checkbox"
         :value="label"
         v-model="model"
+        :disabled='isDisable'
         @change="change">
       <input 
         v-else
         type="checkbox"
-        :disabled='disabled'
+        :disabled='isDisable'
         :checked="currentValue"
         @change="change">
+        <span></span>
+        <span class="label" :class="{'disabled' : isDisable}">
+          <slot></slot>
+        </span>
+        
     </span>
-    <slot></slot>
+      
   </label>
 </template>
 <script>
 import { findComponentUpward } from '../utils/assist.js';
+import Emitter from '../mixins/emitter.js'
 export default {
-  name: 'iCheckbox',
+  mixins: [Emitter],
+  name: 'checkbox',
   props: {
     label: {
       type: [String, Number, Boolean]
@@ -30,7 +38,7 @@ export default {
       default: false
     },
     value: {
-      // 只在当个时候使用
+      // 只在一个时候使用
       type: [String, Number, Boolean],
       default: false,
     },
@@ -48,7 +56,8 @@ export default {
       currentValue: this.value,
       model: [], // 多模式使用
       group: false,
-      parent: null
+      parent: null,
+      maxDisabled: false, // 最大
     }
   },
   watch: {
@@ -61,7 +70,7 @@ export default {
     }
   },
   mounted() {
-    this.parent = findComponentUpward(this, 'iCheckboxGroup')
+    this.parent = findComponentUpward(this, 'checkboxGroup')
 
     if(this.parent) {
       this.group = true
@@ -78,10 +87,8 @@ export default {
       if(this.disabled) {
         return false
       }
-
       const checked = event.target.checked
       this.currentValue = checked
-
       const value = checked ? this.trueValue : this.falseValue
       this.$emit('input', value) 
 
@@ -95,7 +102,17 @@ export default {
     updateModel() {
       this.currentValue = this.value === this.trueValue
     }
+  },
+  computed: {
+    isDisable() {
+      return this.disabled || this.maxDisabled
+    }
   }
 }
 </script>
+
+<style lang="scss">
+@import './index.scss';
+</style>
+
 

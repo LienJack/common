@@ -4,8 +4,8 @@
     :disabled="disabled"
     @click="handleClick">
     <span>
-      <slot name="btn-left" class="btn-left">
-      </slot>
+      <!-- <slot name="btn-left" class="btn-left"/> -->
+      <i class="material-icons">3d_rotation</i>
     </span>
     <label class="xf-button-label"><slot></slot></label>
     <span>
@@ -67,9 +67,9 @@ export default {
       return [
         `${prefix}`,
         `${prefix}-${this.size}`,
-        `${prefix}-${this.color}`
+        `${prefix}-${this.primary}`
         ,{
-          [`{prefix}-disabled`]:this.disabled,
+          [`${prefix}-disabled`]:this.disabled,
         }
       ]
     }

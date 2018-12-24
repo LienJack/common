@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <table-render/>
+    <com-radio/>
   </div>
 </template>
 
 <script>
 import alert from './components/alert/alert'
 import tableRender from './components/table-render/table-render'
-
+import checkBox from './components/checkbox/index'
+import comRadio from './components/radio/index'
 export default {
   name: 'App',
   components: {
-    tableRender
+    tableRender,
+    checkBox,
+    comRadio
   },
   data() {
     return {
@@ -21,14 +24,10 @@ export default {
  
   },
   methods: {
-    close () {
-    },
-    show() {
-      this.$Alert.info({'content':'1'})
-      this.$Alert.info({'content':'12'})
-      this.$Alert.info({'content':'123'})
-      this.$Alert.info({'content':'1234'})
+    show(e) {
+      console.log(e)
     }
+
   }
 }
 </script>

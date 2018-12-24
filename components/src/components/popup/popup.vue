@@ -20,10 +20,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  $prefix: "xf-popup";
-   .#{$prefix} {
-     
-   }
 </style>
 
 

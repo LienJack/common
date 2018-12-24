@@ -8,15 +8,16 @@
 import { findComponentsDownward } from '../utils/assist.js';
 import Emitter from '../mixins/emitter.js'
 export default {
-  name: 'iCheckboxGroup',
+  name: 'checkboxGroup',
   mixins: [Emitter],
   props: {
     value: {
       type: Array,
       default() {
         return []
-      }
-    }
+      },
+    },
+    max: Number
   },
   data() {
     return {
@@ -26,14 +27,19 @@ export default {
   },
   methods: {
     updateModel(update) {
-      this.childrens = findComponentsDownward(this, 'iCheckbox')
+      this.childrens = findComponentsDownward(this, 'checkbox')
       if(this.childrens) {
         const value = this.value
         this.childrens.forEach(child => {
           child.model = value
           if(update) {
-            // child.currentValue = value.some(child.label)
-            child.currentValue = value.indexOf(child.label) >= 0;
+            child.currentValue = value.includes(child.label)
+            // child.currentValue = value.indexOf(child.label) >= 0;
+            if(this.max && this.value.length >= this.max) {
+              child.maxDisabled = !value.includes(child.label)
+            } else {
+              child.maxDisabled = false
+            }
             child.group = true
           }
         })
