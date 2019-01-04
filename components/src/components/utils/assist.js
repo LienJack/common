@@ -48,7 +48,7 @@ export function findComponentDownward (context, componentName) {
         break
       } else {
         children = findComponentDownward(child,componentName)
-        if(children) break // 找到一个之后全部停止便利
+        if(children) break // 找到一个之后全部停止遍历
       }
     }
   }
