@@ -81,8 +81,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'assets/sytle/var.scss';
-@import 'assets/sytle/element.scss'; // cell 样式
+@import 'assets/style/var.scss';
+@import 'assets/style/element.scss'; // cell 样式
 $prefix: "xf-cell";
 .#{$prefix} {
   @include cell;

@@ -127,7 +127,7 @@ export default {
 
 <style lang="scss" scoped>
   $prefix: "xf-field";
-  @import 'assets/sytle/var.scss';
+  @import 'assets/style/var.scss';
   .#{$prefix} {
     display: flex;
   }

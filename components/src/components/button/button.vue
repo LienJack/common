@@ -77,8 +77,8 @@ export default {
 }
 </script>
 <style lang="scss" type="text/css">
-@import 'assets/sytle/var.scss';
-@import 'assets/sytle/element.scss'; // button 样式
+@import 'assets/style/var.scss';
+@import 'assets/style/element.scss'; // button 样式
 $prefix: "xf-btn";
   .#{$prefix} {
     @include button

@@ -1,0 +1,58 @@
+@import 'assets/style/var.scss';
+
+$prefix:'lien-nav-bar';
+.#{$prefix} {
+  height: 46px;
+  position: relative;
+  user-select: none;
+  text-align: center;
+  line-height: 46px;
+  background-color: $white;
+
+  .lien-icon {
+    color: $blue;
+    vertical-align: middle;
+  }
+
+}
+
+.#{$prefix}-title {
+  margin: 0 auto;
+  max-width: 60%;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.#{$prefix}-fixed {
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+}
+
+.#{$prefix}-left, .#{$prefix}-right {
+  bottom: 0;
+  font-size: 14px;
+  position: absolute;
+}
+
+.#{$prefix}-left {
+  left: 15px;
+}
+
+.#{$prefix}-right {
+  right: 15px;
+}
+
+.#{$prefix}-text {
+  color: $blue;
+  margin: 0 -15px;
+  padding: 0 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.#{$prefix}-arrow {
+  min-width: 1em;
+  font-size: 16px;
+}

@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'assets/sytle/var.scss';
+@import 'assets/style/var.scss';
 $prefix: 'xf-radiolist';
 $radio: 'xf-radio';
 .#{$prefix}-label {

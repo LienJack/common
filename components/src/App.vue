@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <com-radio/>
+    <br/>
+    <slider v-model="slider" :min="0"/>
   </div>
 </template>
 
@@ -9,15 +10,20 @@ import alert from './components/alert/alert'
 import tableRender from './components/table-render/table-render'
 import checkBox from './components/checkbox/index'
 import comRadio from './components/radio/index'
+import navBar from './components/nav-bar/index'
+import slider from './components/slider/index'
 export default {
   name: 'App',
   components: {
     tableRender,
     checkBox,
-    comRadio
+    comRadio,
+    navBar,
+    slider
   },
   data() {
     return {
+      slider:50,
     }
   },
   mounted() {
